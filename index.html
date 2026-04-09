@@ -1,228 +1,574 @@
 <!doctype html>
 <html lang="en">
 <head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="icon" type="image/png" href="CLT Logo.png">
 
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>CLT Classroom Observation Form - FCCU</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    body { 
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #ffffff 0%, #ffffff 100%);
+      padding: 10px;
+      min-height: 100vh;
+    }
+    
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+      overflow: hidden;
+      
+    }
+    
 
-<title>CLT Classroom Observation Form - FCCU</title>
-
-<style>
-
-*{margin:0;padding:0;box-sizing:border-box;}
-
-body{
-font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;
-background:#f5f5f5;
-padding:20px;
-}
-
-.container{
-max-width:900px;
-margin:auto;
-background:white;
-border-radius:12px;
-box-shadow:0 10px 40px rgba(0,0,0,0.2);
-overflow:hidden;
-}
-
-.header{
-text-align:center;
-padding:30px;
-border-bottom:2px solid #eee;
-}
-
-.header h1{
-font-size:28px;
-margin-bottom:6px;
-}
-
-.subtitle{
-font-size:14px;
-color:#555;
-}
-
-.form-content{
-padding:30px;
-}
-
-.form-group{
-margin-bottom:20px;
-}
-
-label{
-display:block;
-margin-bottom:6px;
-font-weight:600;
-}
-
-input, textarea{
-width:100%;
-padding:10px;
-border:1px solid #ccc;
-border-radius:6px;
-font-size:14px;
-}
-
-.section{
-border:1px solid #ddd;
-padding:20px;
-border-radius:8px;
-margin-top:25px;
-background:#fafafa;
-}
-
-.section-title{
-font-weight:700;
-margin-bottom:15px;
-}
-
-.checkbox-item{
-display:flex;
-align-items:center;
-gap:10px;
-margin-bottom:12px;
-}
-
-.checkbox-item input[type="checkbox"]{
-width:18px;
-height:18px;
-}
-
-button{
-padding:12px 40px;
-border:none;
-background:#8B5A3C;
-color:white;
-border-radius:6px;
-font-size:16px;
-cursor:pointer;
-}
-
-button:hover{
-background:#6B4423;
-}
-
-.two-column{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:20px;
-}
-
-@media(max-width:700px){
-.two-column{
-grid-template-columns:1fr;
-}
-}
-
-</style>
-
+    .header {
+      background: linear-gradient(135deg, #ffffff 0%, #ffffff 100%);
+      color: white;
+      padding: 30px;
+      margin: 20px;
+      text-align: center;
+      position: relative;
+      border: 2px solid #D2B48C;
+      border-radius: 12px 12px 12px 12px;
+    }
+    
+    .logo-section {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+    
+    .logo {
+      width: 150px;
+      height: 150px;
+      object-fit: contain;
+    }
+    
+    .header h1 {
+      font-size: 3rem;
+      margin-bottom: 8px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      color: #000000;
+    }
+    
+    .header .subtitle {
+      font-size: 1rem;
+      opacity: 0.95;
+      font-weight: 300;
+    }
+    
+    .header .institution {
+      font-size: 1.1rem;
+      margin-top: 10px;
+      font-weight: 500;
+      letter-spacing: 1px;
+    }
+    
+    .form-content {
+      padding: 40px;
+    }
+    
+    .form-group {
+      margin-bottom: 24px;
+    }
+    
+    label.main-label { 
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 600;
+      color: #2c3e50;
+      font-size: 0.95rem;
+    }
+    
+    input[type="text"], 
+    input[type="date"], 
+    input[type="number"], 
+    textarea { 
+      width: 100%;
+      padding: 12px;
+      border: 2px solid #e0e0e0;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      transition: all 0.3s ease;
+      font-family: inherit;
+    }
+    
+    input[type="text"]:focus, 
+    input[type="date"]:focus, 
+    input[type="number"]:focus, 
+    textarea:focus {
+      outline: none;
+      border-color: #8B5A3C;
+      box-shadow: 0 0 0 3px rgba(139, 90, 60, 0.1);
+    }
+    
+    .section { 
+      border: 2px solid #D2B48C;
+      padding: 24px;
+      border-radius: 10px;
+      margin-top: 24px;
+      background: linear-gradient(135deg, #FFF8DC 0%, #FAEBD7 100%);
+    }
+    
+    .section-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #6B4423;
+      margin-bottom: 16px;
+      padding-bottom: 10px;
+      border-bottom: 3px solid #8B5A3C;
+      display: inline-block;
+    }
+    
+    .checkbox-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
+      padding: 12px;
+      background: white;
+      border-radius: 8px;
+      border: 1px solid #e0e0e0;
+      transition: all 0.3s ease;
+    }
+    
+    .checkbox-item:hover {
+      border-color: #8B5A3C;
+      box-shadow: 0 2px 8px rgba(139, 90, 60, 0.2);
+    }
+    
+    .checkbox-item input[type="checkbox"] {
+      width: 20px;
+      height: 20px;
+      cursor: pointer;
+      accent-color: #8B5A3C;
+      flex-shrink: 0;
+    }
+    
+    .checkbox-item label {
+      flex: 1;
+      font-weight: 500;
+      color: #2c3e50;
+      cursor: pointer;
+      margin: 0;
+    }
+    
+    .checkbox-item input[type="text"] {
+      flex: 1;
+      padding: 8px 12px;
+      margin: 0;
+    }
+    
+    .indicator-item {
+      margin-bottom: 20px;
+    }
+    
+    .indicator-label {
+      font-weight: 600;
+      color: #555;
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      display: block;
+    }
+    
+    .actions { 
+      margin-top: 32px;
+      text-align: center;
+      padding-top: 24px;
+      border-top: 2px solid #e0e0e0;
+    }
+    
+    button { 
+      padding: 14px 48px;
+      border: none;
+      border-radius: 8px;
+      background: linear-gradient(135deg, #bc7840 0%, #8B5A3C 100%);
+      color: white;
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(107, 68, 35, 0.3);
+      letter-spacing: 0.5px;
+    }
+    
+    button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(107, 68, 35, 0.4);
+      background: linear-gradient(135deg, #b06e38 0%, #c07b50 100%);
+    }
+    
+    button:active {
+      transform: translateY(0);
+    }
+    
+    .info-text { 
+      font-size: 0.85rem;
+      color: #777;
+      margin-top: 12px;
+      font-style: italic;
+    }
+    
+    .two-column {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+    
+    @media (max-width: 768px) {
+      .two-column {
+        grid-template-columns: 1fr;
+      }
+      
+      .form-content {
+        padding: 24px;
+      }
+      
+      .logo {
+        width: 60px;
+        height: 60px;
+      }
+      
+      .header h1 {
+        font-size: 1.4rem;
+      }
+      
+      .checkbox-item {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      
+      .checkbox-item label {
+        flex: none;
+      }
+    }
+  </style>
 </head>
-
 <body>
+  <div class="container">
+    <div class="header">
+      <div class="logo-section">
+        <img src="CLT Logo.png" alt="FCCU Logo" class="logo">
+      </div>
+      <h1>Classroom Observation Form</h1>
+      <div class="subtitle" style="color: #000000;">For CrO/Observer: Classroom Observation Form/ Tool</div>
+      <div class="institution" style="color: #000000;">Forman Christian College (A Chartered University)</div>
+    </div>
 
-<div class="container">
+    <div class="form-content">
+      <form id="obsForm"
+            method="post"
+            action="https://script.google.com/a/macros/fccollege.edu.pk/s/AKfycbwBu7wIZdA2VCcG-RHYMctEOc6N9Wa7iOSCSsh_TeSY3_EtaNIqRreu24LPnecjlrI/exec"
+            target="hidden_iframe">
+        
+        <input type="hidden" name="secret" value="clt123">
 
-<div class="header">
-<h1>Classroom Observation Form</h1>
-<div class="subtitle">Forman Christian College (A Chartered University)</div>
-</div>
+        <div class="two-column">
+          <div class="form-group">
+            <label class="main-label">Observee Name</label>
+            <input name="observee_name" type="text" required placeholder="Enter observee name">
+          </div>
 
-<div class="form-content">
+          <div class="form-group">
+            <label class="main-label">CrO / Observer Name</label>
+            <input name="observer_name" type="text" required placeholder="Enter observer name">
+          </div>
+        </div>
 
-<form id="obsForm"
-method="POST"
-action="YOUR_WEBAPP_URL_HERE">
+        <div class="two-column">
+          <div class="form-group">
+            <label class="main-label">Course Name</label>
+            <input name="course_name" type="text" placeholder="Enter course name">
+          </div>
 
-<input type="hidden" name="secret" value="clt123">
+          <div class="form-group">
+            <label class="main-label">No. of Students in Class</label>
+            <input name="num_students" type="number" min="0" placeholder="0">
+          </div>
+        </div>
 
-<div class="two-column">
+        <div class="form-group">
+          <label class="main-label">Date</label>
+          <input name="date" type="date">
+        </div>
 
-<div class="form-group">
-<label>Observee Name</label>
-<input type="text" name="observee_name" required>
-</div>
+        <div class="section">
+          <div class="section-title">Section A — Observation Notes</div>
+          <p style="margin-bottom: 20px; color: #555; font-size: 0.9rem;"><strong>NOTE:</strong> The observee may proactively identify specific instructional areas for targeted support. This should be decided in the very first meeting between the CrO and Observee. The CrO will then provide focused feedback on these predetermined areas, along with the ones listed below.</p>
+          
+          <div style="margin-bottom: 20px;">
+            <label class="main-label">Time</label>
+            <input type="text" name="time" placeholder="Enter time">
+          </div>
 
-<div class="form-group">
-<label>Observer Name</label>
-<input type="text" name="observer_name" required>
-</div>
+          <div style="margin-bottom: 16px; font-weight: 600; color: #2c3e50;">The teacher</div>
+          
+          <div class="checkbox-item">
+            <input type="checkbox" name="behaviour" value="punctual" id="b1">
+            <label for="b1">Is punctual</label>
+            <input type="text" name="behaviour_punctual_notes" placeholder="Additional notes...">
+          </div>
 
-</div>
+          <div class="checkbox-item">
+            <input type="checkbox" name="behaviour" value="organized" id="b2">
+            <label for="b2">Is organized and well-prepared: Has the necessary resources lined as needed</label>
+            <input type="text" name="behaviour_organized_notes" placeholder="Additional notes...">
+          </div>
 
-<div class="two-column">
+          <div class="checkbox-item">
+            <input type="checkbox" name="behaviour" value="volume" id="b3">
+            <label for="b3">Uses adequate volume</label>
+            <input type="text" name="behaviour_volume_notes" placeholder="Additional notes...">
+          </div>
 
-<div class="form-group">
-<label>Course Name</label>
-<input type="text" name="course_name">
-</div>
+          <div class="checkbox-item">
+            <input type="checkbox" name="behaviour" value="enunciates" id="b4">
+            <label for="b4">Enunciates words distinctly</label>
+            <input type="text" name="behaviour_enunciates_notes" placeholder="Additional notes...">
+          </div>
 
-<div class="form-group">
-<label>No. of Students</label>
-<input type="number" name="num_students">
-</div>
+          <div class="checkbox-item">
+            <input type="checkbox" name="behaviour" value="min_fillers" id="b5">
+            <label for="b5">Minimally uses "um", "uh", "like", "you know", "oh" etc.</label>
+            <input type="text" name="behaviour_fillers_notes" placeholder="Additional notes...">
+          </div>
 
-</div>
+          <div class="checkbox-item">
+            <input type="checkbox" name="behaviour" value="eye_contact" id="b6">
+            <label for="b6">Makes eye contact with students</label>
+            <input type="text" name="behaviour_eye_contact_notes" placeholder="Additional notes...">
+          </div>
 
-<div class="form-group">
-<label>Date</label>
-<input type="date" name="date">
-</div>
+          <div class="checkbox-item">
+            <input type="checkbox" name="behaviour" value="gestures" id="b7">
+            <label for="b7">Uses hand and facial gestures</label>
+            <input type="text" name="behaviour_gestures_notes" placeholder="Additional notes...">
+          </div>
 
-<div class="section">
+          <div class="checkbox-item">
+            <input type="checkbox" name="behaviour" value="humor" id="b8">
+            <label for="b8">Uses humor effectively as appropriate</label>
+            <input type="text" name="behaviour_humor_notes" placeholder="Additional notes...">
+          </div>
 
-<div class="section-title">Teacher Behaviour</div>
+          <div class="checkbox-item">
+            <input type="checkbox" name="behaviour" value="class_setting" id="b9">
+            <label for="b9">Sets physical setting of the classroom according to task requirement</label>
+            <input type="text" name="behaviour_setting_notes" placeholder="Additional notes...">
+          </div>
+        </div>
 
-<div class="checkbox-item">
-<input type="checkbox" name="behaviour" value="punctual">
-<label>Punctual</label>
-</div>
+        <div class="section">
+          <div class="section-title">Describe Classroom Seating Plan</div>
+          <p style="margin-bottom: 12px; font-size: 0.85rem; color: #555;"><strong>Key:</strong> x = male, y = female, ∅ = empty seats, / = teacher</p>
+          <textarea name="seating_plan" rows="6" placeholder="Draw or describe the seating arrangement..."></textarea>
+        </div>
 
-<div class="checkbox-item">
-<input type="checkbox" name="behaviour" value="organized">
-<label>Organized and prepared</label>
-</div>
+        <div class="section">
+          <div class="section-title">Section B</div>
+          <p style="margin-bottom: 20px; color: #555; font-size: 0.9rem;">You may use symbols (✔) for relevant indicator/trigger. Please write your comments, if any, in the boxes below.</p>
 
-<div class="checkbox-item">
-<input type="checkbox" name="behaviour" value="eye_contact">
-<label>Makes eye contact</label>
-</div>
+          <div class="indicator-item">
+            <label class="indicator-label">1.</label>
+            <div style="margin-left: 20px;">
+              <div class="checkbox-item">
+                <input type="checkbox" name="b1_1" id="b1_1">
+                <label for="b1_1">Sets the pace of the lesson</label>
+              </div>
+              <div class="checkbox-item">
+                <input type="checkbox" name="b1_2" id="b1_2">
+                <label for="b1_2">States the purpose of the lesson</label>
+              </div>
+              <div class="checkbox-item">
+                <input type="checkbox" name="b1_3" id="b1_3">
+                <label for="b1_3">Recaps the previous lesson</label>
+              </div>
+              <div class="checkbox-item">
+                <input type="checkbox" name="b1_4" id="b1_4">
+                <label for="b1_4">Clear instructions regarding expectation: assignments, task expectations, due dates, grading etc</label>
+              </div>
+            </div>
+            <label class="indicator-label" style="margin-top: 12px;">Comments (if any)</label>
+            <textarea name="b1_comments" rows="3" placeholder="Your comments..."></textarea>
+          </div>
 
-<div class="checkbox-item">
-<input type="checkbox" name="behaviour" value="humor">
-<label>Uses humor effectively</label>
-</div>
+          <div class="indicator-item">
+            <label class="indicator-label">2. Teacher ensures concept clarity</label>
+            <div style="margin-left: 20px;">
+              <div class="checkbox-item">
+                <input type="checkbox" name="b2_1" id="b2_1">
+                <label for="b2_1">Clear communication e.g., explains well</label>
+              </div>
+              <div class="checkbox-item">
+                <input type="checkbox" name="b2_2" id="b2_2">
+                <label for="b2_2">Questioning e.g. low-order and high-order</label>
+              </div>
+              <div class="checkbox-item">
+                <input type="checkbox" name="b2_3" id="b2_3">
+                <label for="b2_3">Uses, real life examples, analogies, etc</label>
+              </div>
+              <div class="checkbox-item">
+                <input type="checkbox" name="b2_4" id="b2_4">
+                <label for="b2_4">Probes students for their viewpoints, etc</label>
+              </div>
+            </div>
+            <label class="indicator-label" style="margin-top: 12px;">Comments (if any)</label>
+            <textarea name="b2_comments" rows="3" placeholder="Your comments..."></textarea>
+          </div>
 
-</div>
+          <div class="indicator-item">
+            <label class="indicator-label">3. Effective use of technology/resources</label>
+            <div style="margin-left: 20px;">
+              <div class="checkbox-item">
+                <input type="checkbox" name="b3_1" id="b3_1">
+                <label for="b3_1">Multi-modal approach e.g., Individual & Pair and Group work</label>
+              </div>
+              <div class="checkbox-item">
+                <input type="checkbox" name="b3_2" id="b3_2">
+                <label for="b3_2">Multiple technology tools/apps, e.g, PowerPoint, Padlet, etc</label>
+              </div>
+              <div class="checkbox-item">
+                <input type="checkbox" name="b3_3" id="b3_3">
+                <label for="b3_3">Various resources e.g, Handout, Podcast, Video tutorial, infographics, etc</label>
+              </div>
+            </div>
+            <label class="indicator-label" style="margin-top: 12px;">Comments (if any)</label>
+            <textarea name="b3_comments" rows="3" placeholder="Your comments..."></textarea>
+          </div>
 
-<div class="section">
+          <div class="indicator-item">
+            <label class="indicator-label">4. Encourages all students to engage</label>
+            <div style="margin-left: 20px;">
+              <div class="checkbox-item">
+                <input type="checkbox" name="b4_1" id="b4_1">
+                <label for="b4_1">Safe welcoming ethos of the class</label>
+              </div>
+              <div class="checkbox-item">
+                <input type="checkbox" name="b4_2" id="b4_2">
+                <label for="b4_2">Mindful of all types of learners</label>
+              </div>
+              <div class="checkbox-item">
+                <input type="checkbox" name="b4_3" id="b4_3">
+                <label for="b4_3">Uses multiple approaches e.g, discussion, Q/A, roleplay, pair and share</label>
+              </div>
+              <div class="checkbox-item">
+                <input type="checkbox" name="b4_4" id="b4_4">
+                <label for="b4_4">Encourages various classroom activities; individual & group</label>
+              </div>
+            </div>
+            <label class="indicator-label" style="margin-top: 12px;">Comments (if any)</label>
+            <textarea name="b4_comments" rows="3" placeholder="Your comments..."></textarea>
+          </div>
 
-<div class="section-title">Comments</div>
+          <div class="indicator-item">
+            <label class="indicator-label">5. Evidence of lesson objective(s) achievement within class duration</label>
+            <div style="margin-left: 20px;">
+              <div class="checkbox-item">
+                <input type="checkbox" name="b5_1" id="b5_1">
+                <label for="b5_1">Appropriate assessment - Multiple types- aligned with outcomes</label>
+              </div>
+              <div class="checkbox-item">
+                <input type="checkbox" name="b5_2" id="b5_2">
+                <label for="b5_2">Well-managed time for each section/ activity as planned</label>
+              </div>
+            </div>
+            <label class="indicator-label" style="margin-top: 12px;">Comments (if any)</label>
+            <textarea name="b5_comments" rows="3" placeholder="Your comments..."></textarea>
+          </div>
 
-<textarea name="overall_comments" rows="4"></textarea>
+          <div class="indicator-item">
+            <label class="indicator-label">6. Flexibility/ adaptability in case of a sudden disruption /interruption (Optional)</label>
+          
+            <div style="margin-left: 20px; margin-bottom: 12px;">
+              <label style="font-size: 0.9rem; color: #555;">State the disruption ie, tech failure, grid blackout, accident etc</label>
+            </div>
+            <label class="indicator-label" style="margin-top: 12px;">Comments (if any specific to the handling of the interruption)</label>
+            <textarea name="b6_comments" rows="3" placeholder="Your comments..."></textarea>
+          </div>
 
-</div>
+          <div class="indicator-item">
+            <label class="indicator-label">7. Conclusion</label>
+            <div style="margin-left: 20px;">
+              <div class="checkbox-item">
+                <input type="checkbox" name="b7_1" id="b7_1">
+                <label for="b7_1">Proper wrap-up: Summary/Key takeaways of the lesson</label>
+              </div>
+              <div class="checkbox-item">
+                <input type="checkbox" name="b7_2" id="b7_2">
+                <label for="b7_2">Feedback on lesson from students</label>
+              </div>
+            </div>
+            <label class="indicator-label" style="margin-top: 12px;">Comments (if any)</label>
+            <textarea name="b7_comments" rows="3" placeholder="Your comments..."></textarea>
+          </div>
 
-<br>
+          <div class="indicator-item">
+            <label class="indicator-label">8. Comments</label>
+            <label class="indicator-label" style="margin-top: 8px; font-weight: 500;">On an specific area that observee requested (apart from above)</label>
+            <textarea name="b8_specific_comments" rows="3" placeholder="Your comments..."></textarea>
+            
+            <label class="indicator-label" style="margin-top: 16px; font-weight: 500;">Points for development:</label>
+            <textarea name="b8_development_points" rows="3" placeholder="Points for development..."></textarea>
+            
+            <label class="indicator-label" style="margin-top: 16px; font-weight: 500;">Overall comments:</label>
+            <textarea name="b8_overall_comments" rows="3" placeholder="Overall comments..."></textarea>
+          </div>
+        </div>
 
-<center>
-<button type="submit">Submit Observation</button>
-</center>
+        <div class="two-column">
+          <div class="form-group">
+            <label class="main-label">Signature of CrO / Observer</label>
+            <input name="observer_signature" type="text" placeholder="Type your name">
+          </div>
 
-</form>
+          <div class="form-group">
+            <label class="main-label">Signature of New faculty of Fall</label>
+            <input name="faculty_signature" type="text" placeholder="Type your name">
+          </div>
+        </div>
 
-</div>
-</div>
+        <p style="margin-top: 16px; font-size: 0.9rem; color: #555; font-style: italic;"><strong>NOTE: </strong> Your observation data will be securely recorded in the CLT database</p>
 
-<script>
+        <div class="actions">
+          <button type="submit">Submit Observation Form</button>
+          
+        </div>
+      </form>
+    </div>
+  </div>
 
-document.getElementById("obsForm").addEventListener("submit", function(){
+  <iframe name="hidden_iframe" style="display:none;"></iframe>
 
-alert("Form submitted successfully!");
-
-});
-
-</script>
-
+  <script>
+    let justSubmitted = false;
+    
+    document.getElementById('obsForm').addEventListener('submit', function(e){
+      if (justSubmitted) {
+        e.preventDefault();
+        return false;
+      }
+      justSubmitted = true;
+    });
+    
+    const iframe = document.querySelector('iframe[name="hidden_iframe"]');
+    iframe.addEventListener('load', function(){
+      if (justSubmitted) {
+        alert('✓ Form submitted successfully! Thank you for your observation.');
+        document.getElementById('obsForm').reset();
+        setTimeout(function() {
+          justSubmitted = false;
+        }, 2000);
+      }
+    });
+  </script>
 </body>
+
 </html>
